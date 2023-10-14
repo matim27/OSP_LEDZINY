@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aktywacja konta</title>
+</head>
+<body>
+    <h2>Aktywacja konta</h2>
+    <p>Witaj {{ user.username }}!</p>
+    <p>Dziękujemy za rejestrację w naszym serwisie. Kliknij poniższy link, aby aktywować swoje konto:</p>
+    <p><a href="{{ protocol }}://{{ domain }}{{ link }}">Aktywuj konto</a></p>
+    <p>Jeśli nie rejestrowałeś się na naszej stronie, zignoruj tę wiadomość.</p>
+</body>
+</html>

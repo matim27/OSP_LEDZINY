@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'custom_auth',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'custom_auth.User'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'  # Adres serwera SMTP
+EMAIL_PORT = 587  # Port serwera SMTP (587 to standardowy port dla TLS)
+EMAIL_USE_TLS = True  # Używaj TLS (True lub False, w zależności od wymagań serwera)
+EMAIL_HOST_USER = 'your_email@example.com'  # Adres e-mail nadawcy
+EMAIL_HOST_PASSWORD = 'your_email_password'  # Hasło do konta e-mail
+
+DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Domyślny adres e-mail nadawcy
+EMAIL_SUBJECT_PREFIX = '[Accounts] '  # Prefix tytułów e-maili
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
