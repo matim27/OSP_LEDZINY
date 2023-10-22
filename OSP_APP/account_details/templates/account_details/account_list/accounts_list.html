@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/accounts_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <section class="login-form">
+        <h1>Lista Strażaków</h1>
+        <table>
+            <tr>
+                <th>Imię</th>
+                <th>Naziwsko</th>
+                <th>Numer Telefonu</th>
+                <th>Prawo Jazdy</th>
+                <th>Szkolenia</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.driverlicense.category }}</td>
+                    <td>{{ user.training }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+</div>
+{% endblock %}

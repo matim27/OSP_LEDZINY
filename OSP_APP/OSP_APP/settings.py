@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'custom_auth',
     'accounts',
+    'crispy_bootstrap5',
+    'crispy_forms',
+    'phonenumber_field',
+    'account_details',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'OSP_APP.urls'
@@ -56,7 +64,8 @@ ROOT_URLCONF = 'OSP_APP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(os.path.join(BASE_DIR, 'accounts/templates/accounts')),
+                 (os.path.join(BASE_DIR, 'account_details/templates/account_details'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,7 +130,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = 'static/'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts/static'),
+    os.path.join(BASE_DIR, 'account_details/static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
@@ -130,15 +145,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'custom_auth.User'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.example.com'  # Adres serwera SMTP
-EMAIL_PORT = 587  # Port serwera SMTP (587 to standardowy port dla TLS)
-EMAIL_USE_TLS = True  # Używaj TLS (True lub False, w zależności od wymagań serwera)
-EMAIL_HOST_USER = 'your_email@example.com'  # Adres e-mail nadawcy
-EMAIL_HOST_PASSWORD = 'your_email_password'  # Hasło do konta e-mail
-
-DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Domyślny adres e-mail nadawcy
-EMAIL_SUBJECT_PREFIX = '[Accounts] '  # Prefix tytułów e-maili
+EMAIL_HOST = 'smtp.wp.pl'
+EMAIL_HOST_USER = 'mati.m27@wp.pl'
+EMAIL_HOST_PASSWORD = 'VX3QRQFTJMH2C4ZB'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'mati.m27@wp.pl'
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+LOGIN_REDIRECT_URL = '/home/'
+LOGOUT_REDIRECT_URL = '/login/'
+

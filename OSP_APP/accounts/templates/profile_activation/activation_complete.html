@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user_reset_password.css' %}">
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+
+  <!--Password Reset Complete-->
+    <div class="reset-container">
+	    <h2 class="font-weight-bold mt-3">Resetowanie hasła przebiegło pomyślnie</h2>
+		<hr>
+        <p>Twoje hasło zostało zmienione. Możesz się teraz zalogować.</p>
+
+     <div class="button-container">
+            <a href="{% url "login" %}"><button class="btn user-login-button">Zaloguj się</button></a>
+     </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

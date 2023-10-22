@@ -2,6 +2,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.template.loader import get_template
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -9,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from custom_auth.managers import CustomUserManager
+from phonenumber_field.modelfields import PhoneNumberField
 
 """https://www.youtube.com/watch?v=HshbjK1vDtY&t=2512s"""
 """https://www.codingforentrepreneurs.com/blog/how-to-create-a-custom-django-user-model/"""
@@ -18,6 +20,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(_("email address"), unique=True)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
+    phone_number = PhoneNumberField(region='PL')
 
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
@@ -51,7 +54,7 @@ class User(AbstractBaseUser):
 
         token_generator = PasswordResetTokenGenerator()
         token = token_generator.make_token(self)
-        subject = 'Ustaw hasło dla swojego nowego konta w OSP_APP'
+        subject = 'Ustaw hasło dla swojego konta w OSP Lędziny'
         from_email = settings.EMAIL_HOST_USER
         to_email = self.email
         html_template = get_template('emails/email_to_new_user.html')
@@ -68,3 +71,9 @@ class User(AbstractBaseUser):
         msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
         msg.attach_alternative(html_content, "text/html")
         msg.send(fail_silently=False)
+
+    def get_absolute_url(self):
+        return reverse_lazy('register')
+
+    def get_full_name(self):
+        return f'{self.first_name} {self.last_name}'

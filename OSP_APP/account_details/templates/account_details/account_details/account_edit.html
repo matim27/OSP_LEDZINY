@@ -1,0 +1,34 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load crispy_forms_filters %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css' %}">
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <section class="login-form">
+            <h2>Edycja Danych</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    {{ form1|crispy }}
+                    {{ form2|crispy }}
+                    {{ form3|crispy }}
+                    {{ form4|crispy }}
+                </div>
+                <div class="login-button-container">
+                    <button class="btn login-button-down" type="submit">Potwierdź</button>
+                </div>
+            </form>
+            <button class="btn login-button-down" onclick="window.location.href = '{% url 'home' %}'">Wróć na strone głowna</button>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

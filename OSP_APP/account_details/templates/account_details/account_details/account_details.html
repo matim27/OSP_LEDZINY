@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <section class="login-form">
+        <h2>Szczegóły profilu</h2>
+        <ul>
+            <li>Imię: {{ user.first_name }}</li>
+            <li>Nazwisko: {{ user.last_name }}</li>
+            <li>Email: {{ user.email }}</li>
+            <li>Numer Telefonu: {{ user.phone_number }}</li>
+            <li>Posiadana kategoria prawo jazdy:
+                {% if user.driverlicense.category %}
+                    {{ user.driverlicense.category }}
+                {% endif %}
+            </li>
+            <li>Data ważności prawo jazdy:
+                {% if user.driverlicense.permission_date %}
+                    {{ user.driverlicense.permission_date }}
+                {% endif %}
+            </li>
+            <li>Data ważności na pojazdy uprzywilejowane:
+                {% if user.driverlicense.emergency_permission_date %}
+                    {{ user.driverlicense.emergency_permission_date }}
+                {% endif %}
+            </li>
+            <li>Data ważności badań lekarskich:
+                {% if user.medicalcheckup.date %}
+                    {{ user.medicalcheckup.date }}
+                {% endif %}
+            </li>
+            {% if user.medicalcheckup.blood_type %}
+                <li>Grupa krwi: {{ user.medicalcheckup.blood_type }}</li>
+            {% endif %}
+            <li>Data ważności komory dymowej:
+                {% if user.smokebox.date %}
+                    {{ user.smokebox.date }}
+                {% endif %}
+            </li>
+            <li>Szkolenia: {{ user.training }}</li>
+        </ul>
+        <button class="btn login-button-down" onclick="window.location.href = '{% url 'account_edit' %}'">Edytuj Dane</button>
+        <button class="btn login-button-down" onclick="window.location.href = '{% url 'edit_training' pk=user.pk %}'">Edytuj swoje szkolenia</button>
+    </section>
+</div>
+{% endblock %}

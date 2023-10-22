@@ -1,0 +1,82 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OSP Lędziny</title>
+
+    <!-- Dosis Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Base CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+</head>
+<body>
+{% block css %}
+{% endblock %}
+
+
+{% block menu %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            DropDownButton
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="additionalDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="additionalDropdown">
+            <li><a class="dropdown-item" href="{% url 'account_details' pk=user.pk %}">Szczegóły profilu</a></li>
+            <li><a class="dropdown-item" href="{% url 'password_change' pk=user.pk %}">Zmień hasło</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+
+{% block footer %}
+    <footer class="footer">
+        <p>Autor:Mateusz Musioł</p>
+    </footer>
+{% endblock footer %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+{% block additional_js %}
+{% endblock %}
+</body>
+</html>

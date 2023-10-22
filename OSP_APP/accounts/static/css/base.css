@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Montserrat:wght@200&display=swap');
+
+html, body {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1),
+                       rgba(0, 0, 0, 0.1)), url('https://scontent.fktw1-1.fna.fbcdn.net/v/t39.30808-6/380297163_889683495965499_8640614272691494474_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=V6ACIT5oEQAAX8XItid&_nc_ht=scontent.fktw1-1.fna&oh=00_AfDbSuXBgXJmZp5YWZQsCrgjjPyFUv5A1IXwlWFSyy4Epw&oe=653ABAE7');
+                       /*rgba(0, 0, 0, 0.1)), url('https://remiza.com.pl/wp-content/uploads/2022/12/WhatsApp-Image-2022-12-20-at-12.50.31.jpeg');*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position:top;
+
+/*    !*background-size: 100% 100%;*!*/
+/*    !*filter: brightness(0.95);*!*/
+}
+
+.base-background
+{
+    width: 100%;
+    height: auto;
+    background: rgba(250, 250, 250, 0);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+a.nav-link
+{
+    color:rgba(250, 250, 250, 1)!important;
+}
+
+a:hover
+{
+    color:rgba(69, 197, 137, 1)!important;
+}
+a.active
+{
+    color:rgba(69, 197, 137, 1)!important;
+}
+
+.header
+{
+    width: 72%;
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    margin: 50px auto 0 auto;
+    /*background: white;*/
+}
+
+.navbar
+{
+    background: rgba(48, 46, 43,0.87)!important;
+    width: 100%;
+    padding: 3rem 1rem;
+    height: 0;
+    min-height: 7rem;
+    border-radius: 5px;
+    border-width: 0;
+    -webkit-box-shadow: 0 0;
+    box-shadow: 0 0;
+
+}
+
+.brand-inside
+{
+    position: relative;
+    width: 75px;
+    height: 70px;
+    margin-left:auto;
+
+}
+
+#navbarSupportedContent
+{
+    z-index: 9;
+}
+
+.navbar-toggler
+{
+    position: relative;
+    background: green;
+    border:none;
+    padding: 10px 6px;
+
+    /*outline: none;*/
+    z-index: 9;
+}
+.navbar-toggler span
+{
+    display: block;
+    width: 22px;
+    height: 2px;
+    border:1px;
+    background: #fff;
+}
+.navbar-toggler span + span
+{
+    margin-top: 4px;
+    width: 18px;
+    margin-left: 4px;
+}
+
+.navbar-toggler span + span + span {
+    width: 10px;
+    margin-left: 10px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding: 2rem 1.2rem;
+    font-size: 1.2rem;
+    position: relative;
+    /*background: rgba(48, 46, 43,0.87);*/
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    border-top: 4px solid green;
+}
+.navbar-expand-lg .navbar-nav .nav-link:active {
+    border-top: 4px solid green;
+    color:green;
+}
+
+.navbar-nav .btn {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    margin: 2rem 1rem;
+    font-weight: bold;
+}
+.navbar-nav .btn:hover {
+    background-color: green;
+}
+.dropdown-menu {
+    background-color:rgba(48, 46, 43,0.87);
+}
+.dropdown-item {
+    color: white;
+}
+
+.profile-button {
+    position: fixed;
+    top: 5px;
+    right: 20px;
+}
+
+.l-button{
+    color: white;
+    background-color: green;
+    border: none;
+    font-size: 18px;
+
+}
+
+/* For smaller screens */
+@media (max-width: 991px) {
+    .navbar {
+        padding: 1.5rem 1rem;  /* Reduce padding on smaller screens */
+    }
+
+    .brand-inside {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 1rem 1rem;  /* Reduce padding of nav links */
+        font-size: 1rem;    /* Reduce font size if necessary */
+    }
+
+    .navbar-nav button {
+        margin-left: 1rem;  /* Reduce margin-left */
+        padding: 1rem 0;    /* Adjust padding */
+    }
+
+    .navbar-nav .btn {
+        padding: 0.5rem 1rem;  /* Reduce button padding */
+    }
+}
+
+
+/*------footer--------*/
+.footer {
+  font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: auto;
+  background-color: rgba(48, 46, 43,0.87);
+  padding: 30px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;  /* Restricting width for better appearance on wide screens */
+  margin: 0 auto;     /* Centering the container */
+  padding: 0 20px;    /* Giving side padding */
+}
+
+.footer p {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  margin-left: 30px;
+  transition: color 0.3s ease;  /* Smoother transition on hover */
+}
+
+.footer a:hover {
+  color: green;
+}
+
+.footer a:first-child {
+  margin-left: 0;
+}
+
+/*------toast--------*/
+.toast {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+
+}
+.danger {
+    background: red;
+}
+
+.success {
+    background:rgba(69, 197, 137, 0.8) ;
+}

@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css' %}">
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <section class="login-form">
+            <h2>Posiadasz juz dodane szkolenia do twojego konta przejdź do sekcji profilu aby edytowac.</h2>
+                <div class="login-button-container">
+                    <a href="{% url 'home'%}">Przejdź na strone głowna</a>
+                </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
