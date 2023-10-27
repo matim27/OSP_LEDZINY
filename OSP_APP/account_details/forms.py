@@ -72,7 +72,6 @@ class TrainingForm(forms.ModelForm):
         fields = ['training_name']
 
 
-
 class UserEditForm(forms.ModelForm):
     """
     The default
@@ -93,29 +92,6 @@ class UserEditForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'phone_number']
         widgets = {
             'email': TextInput(attrs={'placeholder': 'Email'}),
-            'first_name': TextInput(attrs={'placeholder': 'Imię'}),
-            'last_name': TextInput(attrs={'placeholder': 'Nazwisko'}),
-        }
-
-
-class UserUpdateForm(forms.ModelForm):
-    """
-    The default
-    """
-    def __init__(self, *args, **kwargs):
-        super(UserUpdateForm, self).__init__(*args, **kwargs)
-        self.fields['first_name'].label = ""
-        self.fields['last_name'].label = ""
-        self.fields['phone_number'].label = ""
-
-    phone_number = PhoneNumberField(
-        widget=PhoneNumberPrefixWidget(attrs={'placeholder': 'Numer telefonu'}),
-    )
-
-    class Meta:
-        model = UserModel
-        fields = ['first_name', 'last_name', 'phone_number']
-        widgets = {
             'first_name': TextInput(attrs={'placeholder': 'Imię'}),
             'last_name': TextInput(attrs={'placeholder': 'Nazwisko'}),
         }

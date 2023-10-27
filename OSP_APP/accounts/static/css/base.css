@@ -246,3 +246,7 @@ a.active
 .success {
     background:rgba(69, 197, 137, 0.8) ;
 }
+
+.logout:hover {
+    color:rgba(69, 197, 137, 1)!important;
+}

@@ -5,8 +5,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DetailView, UpdateView, ListView
 
-from account_details.forms import DriverLicenseForm, MedicalCheckupForm, SmokeBoxForm, TrainingForm, UserEditForm, \
-    UserUpdateForm
+from account_details.forms import DriverLicenseForm, MedicalCheckupForm, SmokeBoxForm, TrainingForm, UserEditForm
 from account_details.models import DriverLicense, MedicalCheckup, SmokeBox, Training
 from accounts.forms import UserForm
 
@@ -147,7 +146,7 @@ class AccountEditView(View):
     def get(self, request, *args, **kwargs):
         user = request.user
 
-        form1 = UserUpdateForm(instance=UserModel.objects.get(pk=request.user.pk))
+        form1 = UserEditForm(instance=UserModel.objects.get(pk=request.user.pk))
         driver_license, created2 = DriverLicense.objects.get_or_create(user=user)
         form2 = DriverLicenseForm(instance=driver_license)
         medical_checkup, created3 = MedicalCheckup.objects.get_or_create(user=user)
@@ -160,7 +159,7 @@ class AccountEditView(View):
     def post(self, request, *args, **kwargs):
         user = request.user
 
-        form1 = UserUpdateForm(request.POST, instance=user)
+        form1 = UserEditForm(request.POST, instance=user)
         driver_license, created2 = DriverLicense.objects.get_or_create(user=user)
         form2 = DriverLicenseForm(request.POST, instance=driver_license)
         medical_checkup, created3 = MedicalCheckup.objects.get_or_create(user=user)
@@ -180,5 +179,6 @@ class AccountEditView(View):
 
 class AccountListView(ListView):
     model = UserModel
-    template_name = 'account_details/account_list/accounts_list.html'
+    template_name = 'account_details/accounts_list/accounts_list.html'
     context_object_name = 'users'
+

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import os
 from pathlib import Path
 
+from celery import Celery
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'phonenumber_field',
     'account_details',
+    'fire_vehicle',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -65,7 +68,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [(os.path.join(BASE_DIR, 'accounts/templates/accounts')),
-                 (os.path.join(BASE_DIR, 'account_details/templates/account_details'))],
+                 (os.path.join(BASE_DIR, 'account_details/templates/account_details')),
+                 (os.path.join(BASE_DIR, 'fire_vehicle/templates/fire_vehicle'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,6 +139,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'accounts/static'),
     os.path.join(BASE_DIR, 'account_details/static'),
+    os.path.join(BASE_DIR, 'fire_vehicle/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -158,3 +163,18 @@ SESSION_COOKIE_SECURE = True
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_REDIRECT_URL = '/login/'
 
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'PL'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # URL brokera Celery
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # URL backendu Celery
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+app = Celery('OSP_APP')
+app.config_from_object('django.conf:settings')
+
+
+TWILIO_ACCOUNT_SID = 'AC0a38024a564fe3ebcaaea27da1e384df'
+TWILIO_AUTH_TOKEN = '5f00d2ff47686f75f24039949beb8098'
+TWILIO_PHONE_NUMBER = '+15732404447'

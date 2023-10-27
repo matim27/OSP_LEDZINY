@@ -3,15 +3,15 @@ from django.contrib import admin
 from django.urls import path
 
 from OSP_APP import settings
-from accounts.views import Register, TestView, CustomLoginView, LogoutPageView, ActivationConfirmView, \
+from accounts.views import Register, CustomLoginView, LogoutPageView, ActivationConfirmView, \
     ActivationCompleteView, UserPasswordChangeView, UserPasswordChangeDoneView, UserPasswordResetView, \
-    UserPasswordResetDoneView, UserPasswordResetConfirmView, UserPasswordResetCompleteView
+    UserPasswordResetDoneView, UserPasswordResetConfirmView, UserPasswordResetCompleteView, Home
 
 urlpatterns = [
-    path('home/', TestView.as_view(), name='home'),
+    path('home/', Home.as_view(), name='home'),
     path('login/', CustomLoginView.as_view(), name='login'),
-    path('register/', Register.as_view(), name='register'),
-    path('logout/', LogoutPageView.as_view(), name='logout'), #TODO: zrobic wejscie metoda post
+    path('register/', Register.as_view(), name='register'), #TODO Zablokowanie wejscia osoba postronnym
+    path('logout/', LogoutPageView.as_view(), name='logout'),
 #     path('profile/', views.Profile.as_view(), name='profile'),
     path('activation/confirm/<uidb64>/<token>/', ActivationConfirmView.as_view(), name='activation_token_confirm'),
     path('activation/complete/', ActivationCompleteView.as_view(), name='activation_token_complete'),

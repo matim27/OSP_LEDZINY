@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.forms import SetPasswordForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import INTERNAL_RESET_SESSION_TOKEN, PasswordResetConfirmView, PasswordResetCompleteView, \
@@ -13,17 +14,17 @@ from django.views import View, generic
 from .forms import UserForm, CustomAuthenticationForm
 from django.contrib.auth import login as auth_login
 
+
 UserModel = get_user_model()
 
 
-class TestView(generic.TemplateView):
+class Home(generic.TemplateView):
     template_name = 'home.html'
 
 
-class Register(SuccessMessageMixin, generic.CreateView):
+class Register(generic.CreateView):
     template_name = 'login/user_register.html'
     form_class = UserForm
-    # success_message = "Dodano użytkownika"
 
     def form_valid(self, form):
         """If the form is valid, save the associated model and send email."""

@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/gcba.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <section class="login-form">
+        <h1>Volvo FMX 380</h1>
+        <img src="{% static 'foto/GCBA_1.jpeg' %}" alt='GCBA'>
+        <ul>
+            <li>Skrót: {{ firevehicle.shortcut }}</li>
+            <li>Numery Operacyjne: {{ firevehicle.code_name }}</li>
+            <li>Wymagane prawo jazdy: {{ firevehicle.license_category }}</li>
+        </ul>
+        <h2>Skrytka 1 od kierowcy</h2>
+        <ul>
+{#            <img> skrytki pierwszej od kierowcy#}
+            <li>cos tam jest</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}

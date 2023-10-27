@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{ user.first_name }}</td>
                     <td>{{ user.last_name }}</td>
-                    <td>{{ user.phone_number }}</td>
+                    <td><strong>{{ user.phone_number|cut:'+48' }}</strong></td>
                     <td>{{ user.driverlicense.category }}</td>
                     <td>{{ user.training }}</td>
                 </tr>

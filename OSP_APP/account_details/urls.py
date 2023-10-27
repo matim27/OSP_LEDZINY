@@ -1,5 +1,5 @@
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, include
 from OSP_APP import settings
 from account_details.views import (EditDriverLicenseView, EditMedicalCheckupView, EditSmokeBoxView,
                                    EditTrainingView, AccountEditView, AccountListView, AccountDetailsView)
@@ -15,5 +15,5 @@ urlpatterns = [
     path('user/training/<int:pk>/', EditTrainingView.as_view(), name='edit_training'),
     path('user/<int:pk>/details/', AccountDetailsView.as_view(), name='account_details'),
     path('user/edit/', AccountEditView.as_view(), name='account_edit'),
-    path('users/list/', AccountListView.as_view(), name='account_list'),
+    path('users/list/', AccountListView.as_view(), name='accounts_list'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
