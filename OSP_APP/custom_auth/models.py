@@ -1,8 +1,8 @@
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, AbstractUser
 from django.template.loader import get_template
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -12,15 +12,13 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from custom_auth.managers import CustomUserManager
 from phonenumber_field.modelfields import PhoneNumberField
 
-"""https://www.youtube.com/watch?v=HshbjK1vDtY&t=2512s"""
-"""https://www.codingforentrepreneurs.com/blog/how-to-create-a-custom-django-user-model/"""
 
-
-class User(AbstractBaseUser):
+class User(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
     phone_number = PhoneNumberField(region='PL')
+    username = models.CharField(max_length=255, unique=False, blank=True, null=True)
 
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
@@ -73,7 +71,7 @@ class User(AbstractBaseUser):
         msg.send(fail_silently=False)
 
     def get_absolute_url(self):
-        return reverse_lazy('register')
+        return reverse('register')
 
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'

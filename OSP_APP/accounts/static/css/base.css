@@ -12,8 +12,8 @@ html, body {
     position: relative;
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.1),
-                       rgba(0, 0, 0, 0.1)), url('https://scontent.fktw1-1.fna.fbcdn.net/v/t39.30808-6/380297163_889683495965499_8640614272691494474_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=V6ACIT5oEQAAX8XItid&_nc_ht=scontent.fktw1-1.fna&oh=00_AfDbSuXBgXJmZp5YWZQsCrgjjPyFUv5A1IXwlWFSyy4Epw&oe=653ABAE7');
-                       /*rgba(0, 0, 0, 0.1)), url('https://remiza.com.pl/wp-content/uploads/2022/12/WhatsApp-Image-2022-12-20-at-12.50.31.jpeg');*/
+                       /*rgba(0, 0, 0, 0.1)), url('https://scontent.fktw1-1.fna.fbcdn.net/v/t39.30808-6/380297163_889683495965499_8640614272691494474_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=V6ACIT5oEQAAX8XItid&_nc_ht=scontent.fktw1-1.fna&oh=00_AfDbSuXBgXJmZp5YWZQsCrgjjPyFUv5A1IXwlWFSyy4Epw&oe=653ABAE7');*/
+                       rgba(0, 0, 0, 0.1)), url('https://remiza.com.pl/wp-content/uploads/2022/12/WhatsApp-Image-2022-12-20-at-12.50.31.jpeg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

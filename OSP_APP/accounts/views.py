@@ -25,6 +25,7 @@ class Home(generic.TemplateView):
 class Register(generic.CreateView):
     template_name = 'login/user_register.html'
     form_class = UserForm
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
         """If the form is valid, save the associated model and send email."""
