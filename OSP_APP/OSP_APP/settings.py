@@ -65,7 +65,11 @@ ROOT_URLCONF = 'OSP_APP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': env.list('TEMPLATE_DIRS'),
+        'DIRS': [
+            os.path.join(BASE_DIR, 'accounts/templates/accounts'),
+            os.path.join(BASE_DIR, 'account_details/templates/account_details'),
+            os.path.join(BASE_DIR, 'fire_vehicle/templates/fire_vehicle'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
