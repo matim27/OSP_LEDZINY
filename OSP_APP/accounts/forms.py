@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.forms import TextInput
 from django.contrib.auth import get_user_model
 from phonenumber_field.formfields import PhoneNumberField
@@ -16,15 +17,11 @@ class UserForm(forms.ModelForm):
         self.fields['email'].label = ""
         self.fields['first_name'].label = ""
         self.fields['last_name'].label = ""
-        self.fields['phone_number'].label = ""
 
-    phone_number = PhoneNumberField(
-        widget=PhoneNumberPrefixWidget(attrs={'placeholder': 'Numer telefonu'}),
-    )
 
     class Meta:
         model = UserModel
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = ['first_name', 'last_name', 'email']
         widgets = {
             'email': TextInput(attrs={'placeholder': 'Email'}),
             'first_name': TextInput(attrs={'placeholder': 'Imię'}),
@@ -49,6 +46,9 @@ class UserForm(forms.ModelForm):
             user.save()
         return user
 
+    def save_m2m(self):
+        pass
+
 
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -57,3 +57,4 @@ class CustomAuthenticationForm(AuthenticationForm):
         self.fields['password'].widget = forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Hasło'})
         self.fields['username'].label = ""
         self.fields['password'].label = ""
+
