@@ -56,15 +56,6 @@ class ActivationCompleteView(PasswordResetCompleteView):
     template_name = 'profile_activation/activation_complete.html'
 
 
-# class Profile(LoginRequiredMixin, generic.DetailView):
-#     model = LawFirm
-#     form_class = LawFirmForm
-#     template_name = 'management/profile.html'
-#
-#     def get_object(self, queryset=None):
-#         return self.request.user.profile.law_firm
-
-
 class CustomLoginView(SuccessMessageMixin, LoginView):
     form_class = CustomAuthenticationForm
     template_name = 'login/user_login.html'

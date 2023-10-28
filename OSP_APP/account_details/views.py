@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import CreateView, DetailView, UpdateView, ListView
 
@@ -45,7 +45,7 @@ class EditDriverLicenseView(UpdateView):
     template_name = 'account_details/driver_license/edit_driver_license.html'
 
     def get_success_url(self):
-        return reverse_lazy('account_details', kwargs={'pk': self.request.user.pk})
+        return reverse('account_details', kwargs={'pk': self.request.user.pk})
 
     def get_object(self, queryset=None):
         driver_license, created = DriverLicense.objects.get_or_create(user=self.request.user)
@@ -75,7 +75,7 @@ class EditMedicalCheckupView(UpdateView):
     template_name = 'account_details/medical_checkup/edit_medical_checkup.html'
 
     def get_success_url(self):
-        return reverse_lazy('account_details', kwargs={'pk': self.request.user.pk})
+        return reverse('account_details', kwargs={'pk': self.request.user.pk})
 
     def get_object(self, queryset=None):
         medical_checkup, created = MedicalCheckup.objects.get_or_create(user=self.request.user)
@@ -105,7 +105,7 @@ class EditSmokeBoxView(UpdateView):
     template_name = 'account_details/smokebox/edit_smokebox.html'
 
     def get_success_url(self):
-        return reverse_lazy('account_details', kwargs={'pk': self.request.user.pk})
+        return reverse('account_details', kwargs={'pk': self.request.user.pk})
 
     def get_object(self, queryset=None):
         smokebox, created = SmokeBox.objects.get_or_create(user=self.request.user)
@@ -135,7 +135,7 @@ class EditTrainingView(UpdateView):
     template_name = 'account_details/training/edit_training.html'
 
     def get_success_url(self):
-        return reverse_lazy('account_details', kwargs={'pk': self.request.user.pk})
+        return reverse('account_details', kwargs={'pk': self.request.user.pk})
 
     def get_object(self, queryset=None):
         training, _ = Training.objects.get_or_create(user=self.request.user)
