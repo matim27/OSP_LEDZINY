@@ -19,7 +19,6 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
-#TODO na sprawdzenie dzialania ustawiono 1 minuta
 app.conf.beat_schedule = {
     'vehicle_sms_reminder': {
         'task': 'fire_vehicle.tasks.vehicle_sms_reminder',
