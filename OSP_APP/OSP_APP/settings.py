@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'account_details',
     'fire_vehicle',
+    'depot_departure',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -69,6 +70,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'accounts/templates/accounts'),
             os.path.join(BASE_DIR, 'account_details/templates/account_details'),
             os.path.join(BASE_DIR, 'fire_vehicle/templates/fire_vehicle'),
+            os.path.join(BASE_DIR, 'depot_departure/templates/depot_departure'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -136,8 +138,18 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
-STATICFILES_DIRS = env.list('STATIC_DIRS')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts/static'),
+    os.path.join(BASE_DIR, 'account_details/static'),
+    os.path.join(BASE_DIR, 'fire_vehicle/static'),
+    os.path.join(BASE_DIR, 'depot_departure/static'),
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field

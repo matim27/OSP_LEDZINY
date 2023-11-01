@@ -14,6 +14,7 @@ class CustomUserAdmin(UserAdmin):
         ('Dane Osobowe', {'fields': ('first_name', 'last_name', 'phone_number')}),
         ('Permisje', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Daty', {'fields': ('last_login', 'date_joined')}),
+        ('Uprawnienia', {'fields': ('groups', 'user_permissions')}),
     )
     add_form = UserForm
     add_fieldsets = (

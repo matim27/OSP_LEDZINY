@@ -11,6 +11,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import View, generic
+
+from depot_departure.models import DepotDeparture
 from .forms import UserForm, CustomAuthenticationForm
 from django.contrib.auth import login as auth_login
 
@@ -20,6 +22,12 @@ UserModel = get_user_model()
 
 class Home(generic.TemplateView):
     template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        last_depot_departure = DepotDeparture.objects.order_by('-trip_id')[0:5]
+        context['last_depot'] = last_depot_departure
+        return context
 
 
 class Register(generic.CreateView):

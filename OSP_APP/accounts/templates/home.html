@@ -1,6 +1,39 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block content %}
-<a href="{% url 'edit_training' pk=user.pk %}">testy</a>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      {% for depot in last_depot %}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ depot }}</h5>
+              {% if depot.image %}
+                  <img src="{{ depot.image.url }}" alt="random">
+              {% endif %}
+            <p class="card-text">{{ depot.date }}</p>
+            <p class="card-text">{{ depot.address }}</p>
+            <p class="card-text">{{ depot.dispatch_time }}</p>
+            <ul>
+                {% for vehicle in depot.vehicles.all %}
+                    <li>{{ vehicle }}</li>
+                {% endfor %}
+            </ul>
+            <p class="card-text">{{ depot.incident }}</p>
+            <ul>
+                {% for manning in depot.manning.all %}
+                    <li>{{ manning }}</li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 {% endblock %}
