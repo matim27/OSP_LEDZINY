@@ -10,7 +10,7 @@ from accounts.views import Register, CustomLoginView, LogoutPageView, Activation
 urlpatterns = [
     path('home/', Home.as_view(), name='home'),
     path('login/', CustomLoginView.as_view(), name='login'),
-    path('register/', Register.as_view(), name='register'), #TODO Zablokowanie wejscia osoba postronnym
+    # path('register/', Register.as_view(), name='register'),
     path('logout/', LogoutPageView.as_view(), name='logout'),
 #     path('profile/', views.Profile.as_view(), name='profile'),
     path('activation/confirm/<str:uidb64>/<str:token>/', ActivationConfirmView.as_view(), name='activation_token_confirm'),

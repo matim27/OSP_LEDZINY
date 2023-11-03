@@ -45,4 +45,4 @@ def send_sms(recipient_number, message):
     )
 
 
-#TODO spradzenie działania (redis-server, celery | celery -A OSP_APP worker -l info)
+# spradzenie działania (redis-server, celery | celery -A OSP_APP worker -l info)
