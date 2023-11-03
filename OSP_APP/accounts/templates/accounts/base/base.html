@@ -40,12 +40,14 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{% url 'gcba' %}">GCBA</a></li>
-            <li><a class="dropdown-item" href="#">GBA</a></li>
-            <li><a class="dropdown-item" href="#">GLBA</a></li>
-            <li><a class="dropdown-item" href="#">SLRR</a></li>
+            <li><a class="dropdown-item" href="{% url 'gcba' %}">GBA</a></li>
+            <li><a class="dropdown-item" href="{% url 'gcba' %}">GLBA</a></li>
+            <li><a class="dropdown-item" href="{% url 'gcba' %}">SLRR</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'depot_list' %}">Spis wyjazdów</a>
         </li>
       </ul>
       <ul class="navbar-nav">

@@ -1,7 +1,8 @@
 
-body, h1, h2, h3, p {
-    margin: 0;
-    padding: 0;
+body, h1, h2, h5, p {
+    margin: 10px;
+    padding: 0px;
+    color: #ddd;
 }
 
 
@@ -13,7 +14,8 @@ body, h1, h2, h3, p {
 
 
 .card {
-    border: 1px solid #ddd;
+    background-color: rgba(48, 46, 43,0.87);
+    border: 2px solid #ddd;
     border-radius: 5px;
     margin: 10px 0;
 }
@@ -39,18 +41,13 @@ body, h1, h2, h3, p {
 
 
 .card ul {
-    list-style-type: disc;
-    margin-left: 20px;
-}
-
-
-.card li {
-    margin-bottom: 5px;
+    list-style-type: circle;
+    margin-left: 1px;
 }
 
 
 .info-block {
-    background-color: #f0f0f0;
+    background-color: white;
     padding: 10px;
     border-radius: 5px;
     margin: 10px 0;
