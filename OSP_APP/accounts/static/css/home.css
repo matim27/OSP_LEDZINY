@@ -58,4 +58,11 @@ body, h1, h2, h5, p {
     max-height: 150px;
     height: auto;
 }
+.btn {
+    background-color: rgba(48, 46, 43,0.87);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
 #TODO zmiana tego css oraz html

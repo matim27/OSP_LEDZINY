@@ -18,8 +18,12 @@ class DepotDepartureListView(ListView):
     template_name = 'depot_departure/list/depot_departure_list.html'
     context_object_name = 'depot'
 
+    def is_member_of_group(self):
+        return self.request.user.groups.filter(name='Depot_departure_add').exists()
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         last_depot_departure = DepotDeparture.objects.order_by('-trip_id')
         context['last_depot'] = last_depot_departure
+        context['is_member'] = self.is_member_of_group()
         return context
