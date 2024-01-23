@@ -33,3 +33,4 @@ class DepotTipImageAddView(CreateView):
     template_name = 'depot_tips/depot_tip_image_add.html'
     fields = ['image', 'depot_tip']
     success_url = reverse_lazy('depot_tips')
+
