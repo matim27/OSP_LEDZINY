@@ -7,7 +7,7 @@ from fire_vehicle.models import FireVehicle
 
 UserModel = get_user_model()
 
-
+# TODO: djnago.utils.timezone || logger || flowwer
 @shared_task
 def vehicle_sms_reminder():
     today = date.today()

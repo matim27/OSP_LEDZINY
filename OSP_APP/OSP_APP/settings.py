@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'account_details',
     'fire_vehicle',
     'depot_departure',
+    'depot_tips',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -71,6 +72,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'account_details/templates/account_details'),
             os.path.join(BASE_DIR, 'fire_vehicle/templates/fire_vehicle'),
             os.path.join(BASE_DIR, 'depot_departure/templates/depot_departure'),
+            os.path.join(BASE_DIR, 'depot_tips/templates/depot_tips'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -143,6 +145,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'account_details/static'),
     os.path.join(BASE_DIR, 'fire_vehicle/static'),
     os.path.join(BASE_DIR, 'depot_departure/static'),
+    os.path.join(BASE_DIR, 'depot_tips/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

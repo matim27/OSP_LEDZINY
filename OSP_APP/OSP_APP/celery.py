@@ -22,19 +22,19 @@ def debug_task(self):
 app.conf.beat_schedule = {
     'vehicle_sms_reminder': {
         'task': 'fire_vehicle.tasks.vehicle_sms_reminder',
-        'schedule': timedelta(hours=24),
+        'schedule': timedelta(minutes=1),
     },
     'driver_sms_reminder': {
         'task': 'account_details.tasks.driver_sms_reminder',
-        'schedule': timedelta(hours=24),
+        'schedule': timedelta(minutes=1),
     },
     'medical_sms_reminder': {
         'task': 'account_details.tasks.medical_sms_reminder',
-        'schedule': timedelta(hours=24),
+        'schedule': timedelta(minutes=1),
     },
     'smokebox_sms_reminder': {
         'task': 'account_details.tasks.smokebox_sms_reminder',
-        'schedule': timedelta(hours=24),
+        'schedule': timedelta(minutes=1),
     },
 }
 
